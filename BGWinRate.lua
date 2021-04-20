@@ -14,16 +14,16 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 		addonLoaded = true
 		--initialize variables		
 		--Alterac Valley
-		if (AlteracValleyWins == nil) then AlteracValleyWins = 0; end
-		if (AlteracValleyLosses == nil) then AlteracValleyLosses = 0; end
+		if (BGWinRate_AlteracValleyWins == nil) then BGWinRate_AlteracValleyWins = 0; end
+		if (BGWinRate_AlteracValleyLosses == nil) then BGWinRate_AlteracValleyLosses = 0; end
 		
 		--Warsong Gulch
-		if (WarsongGulchWins == nil) then WarsongGulchWins = 0; end
-		if (WarsongGulchLosses == nil) then WarsongGulchLosses = 0; end
+		if (BGWinRate_WarsongGulchWins == nil) then BGWinRate_WarsongGulchWins = 0; end
+		if (BGWinRate_WarsongGulchLosses == nil) then BGWinRate_WarsongGulchLosses = 0; end
 		
 		--Arathi Basin
-		if (ArathiBasinWins == nil) then ArathiBasinWins = 0; end
-		if (ArathiBasinLosses == nil) then ArathiBasinLosses = 0; end
+		if (BGWinRate_ArathiBasinWins == nil) then BGWinRate_ArathiBasinWins = 0; end
+		if (BGWinRate_ArathiBasinLosses == nil) then BGWinRate_ArathiBasinLosses = 0; end
 	
 	elseif event == "UPDATE_ACTIVE_BATTLEFIELD" then
 	
@@ -41,7 +41,7 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 		if BATTLEFIELD_SHUTDOWN_TIMER == 0 then
 			
 			--this funcion is called again when player leaves the battleground. we only want to trigger it once:
-			--which will be when the battleground ends and the timer should be at 120
+			--which will be when the battleground ends and the shutdown timer should be at 120
 			return
 		end
 		
@@ -62,15 +62,15 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 		
 			if zoneName == "Alterac Valley" then
 			
-				AlteracValleyWins = AlteracValleyWins + 1
+				BGWinRate_AlteracValleyWins = BGWinRate_AlteracValleyWins + 1
 				
 			elseif zoneName == "Warsong Gulch" then
 			
-				WarsongGulchWins = WarsongGulchWins + 1
+				BGWinRate_WarsongGulchWins = BGWinRate_WarsongGulchWins + 1
 			
 			elseif zoneName == "Arathi Basin" then
 			
-				ArathiBasinWins = ArathiBasinWins + 1
+				BGWinRate_ArathiBasinWins = BGWinRate_ArathiBasinWins + 1
 			
 			else
 			
@@ -82,15 +82,15 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 		
 			if zoneName == "Alterac Valley" then
 			
-				AlteracValleyLosses = AlteracValleyLosses + 1
+				BGWinRate_AlteracValleyLosses = BGWinRate_AlteracValleyLosses + 1
 				
 			elseif zoneName == "Warsong Gulch" then
 			
-				WarsongGulchLosses = WarsongGulchLosses + 1
+				BGWinRate_WarsongGulchLosses = BGWinRate_WarsongGulchLosses + 1
 			
 			elseif zoneName == "Arathi Basin" then
 			
-				ArathiBasinLosses = ArathiBasinLosses + 1
+				BGWinRate_ArathiBasinLosses = BGWinRate_ArathiBasinLosses + 1
 			
 			else
 			
@@ -121,14 +121,14 @@ end
 
 local function totalWins()
 	
-	local totalWins = AlteracValleyWins + WarsongGulchWins + ArathiBasinWins
+	local totalWins = BGWinRate_AlteracValleyWins + BGWinRate_WarsongGulchWins + BGWinRate_ArathiBasinWins
 	return totalWins
 
 end
 
 local function totalLosses()
 
-	local totalLosses = AlteracValleyLosses + WarsongGulchLosses + ArathiBasinLosses
+	local totalLosses = BGWinRate_AlteracValleyLosses + BGWinRate_WarsongGulchLosses + BGWinRate_ArathiBasinLosses
 	return totalLosses
 
 end
@@ -136,24 +136,24 @@ end
 -- display stats
 local function displayArathiBasinWinRate()
 
-	local numberOfArathiBasinGames = ArathiBasinWins + ArathiBasinLosses
-	local arathiBasinWinRate = winRate(ArathiBasinWins, numberOfArathiBasinGames)
+	local numberOfArathiBasinGames = BGWinRate_ArathiBasinWins + BGWinRate_ArathiBasinLosses
+	local arathiBasinWinRate = winRate(BGWinRate_ArathiBasinWins, numberOfArathiBasinGames)
 	print("Arathi Basin" .. "(" .. numberOfArathiBasinGames .. "): " .. arathiBasinWinRate .. "%")
 	
 end
 
 local function displayAlteracValleyWinRate()
 
-	local numberOfAlteracValleyGames = AlteracValleyWins + AlteracValleyLosses
-	local alteracValleyWinRate = winRate(AlteracValleyWins, numberOfAlteracValleyGames)
+	local numberOfAlteracValleyGames = BGWinRate_AlteracValleyWins + BGWinRate_AlteracValleyLosses
+	local alteracValleyWinRate = winRate(BGWinRate_AlteracValleyWins, numberOfAlteracValleyGames)
 	print("Alterac Valley" .. "(" .. numberOfAlteracValleyGames .. "): " .. alteracValleyWinRate .. "%")
 	
 end
 
 local function displayWarsongGulchWinRate()
 
-	local numberOfWarsongGulchGames = WarsongGulchWins + WarsongGulchLosses
-	local warsongGulchWinRate = winRate(WarsongGulchWins, numberOfWarsongGulchGames)
+	local numberOfWarsongGulchGames = BGWinRate_WarsongGulchWins + BGWinRate_WarsongGulchLosses
+	local warsongGulchWinRate = winRate(BGWinRate_WarsongGulchWins, numberOfWarsongGulchGames)
 	print("Warsong Gulch" .. "(" .. numberOfWarsongGulchGames .. "): " .. warsongGulchWinRate .. "%")
 	
 end
@@ -179,15 +179,13 @@ end
 --user interaction
 local function MyAddonCommands(msg, editbox)
 
-	if msg == "" then
-		
-		displayAllWinRates()
-		
-	else
-		print("BGWinRate - invalid command")
-	end
+	displayAllWinRates()
+	
 end
 
 SLASH_BGWinRate1 = '/bgwinrate'
+SLASH_BGWinRate2 = '/BGWinRate'
+SLASH_BGWinRate3 = '/bgwr'
+SLASH_BGWinRate4 = '/BGWR'
 
-SlashCmdList["BGWinRate"] = MyAddonCommands   -- add /hiw and /hellow to command list
+SlashCmdList["BGWinRate"] = MyAddonCommands

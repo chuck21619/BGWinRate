@@ -5,6 +5,6 @@
 ## Notes: tracks winrates for battlegrounds
 ## Author: chuck
 ## Version: 1.0
-## SavedVariablesPerCharacter: AlteracValleyWins, AlteracValleyLosses, WarsongGulchWins, WarsongGulchLosses, ArathiBasinWins, ArathiBasinLosses
+## SavedVariablesPerCharacter: BGWinRate_AlteracValleyWins, BGWinRate_AlteracValleyLosses, BGWinRate_WarsongGulchWins, BGWinRate_WarsongGulchLosses, BGWinRate_ArathiBasinWins, BGWinRate_ArathiBasinLosses
 
 BGWinRate.lua
