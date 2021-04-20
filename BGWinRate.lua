@@ -15,7 +15,6 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 	if event == "ADDON_LOADED" and arg1 == "BGWinRate" then
 	
 		addonLoaded = true
-		
 		--initialize variables		
 		--Alterac Valley
 		if (AlteracValleyWins == nil) then AlteracValleyWins = 0; end
@@ -28,10 +27,11 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 		--Arathi Basin
 		if (ArathiBasinWins == nil) then ArathiBasinWins = 0; end
 		if (ArathiBasinLosses == nil) then ArathiBasinLosses = 0; end
-		
+		elseif event == "CURSOR_UPDATE" then
+
+	
 	elseif event == "UPDATE_ACTIVE_BATTLEFIELD" then
 	
-		print("update active battlefield")
 	
 		local playerFaction = UnitFactionGroup("player")
 		local winningFaction = GetBattlefieldWinner()
@@ -41,6 +41,13 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 			--print("BGWinRate: error retrieving battleground winner")
 			return
 			
+		end
+		
+		if BATTLEFIELD_SHUTDOWN_TIMER == 0 then
+			
+			--this funcion is called again when player leaves the battleground. we only want to trigger it once:
+			--which will be when the battleground ends and the timer should be at 120
+			return
 		end
 		
 		if winningFaction == 0 then
@@ -55,8 +62,6 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 		
 		local didWin = winningFaction == playerFaction 
 		local zoneName = GetZoneText()
-		
-		
 		
 		if didWin then
 		
