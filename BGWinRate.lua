@@ -31,6 +31,8 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 		
 	elseif event == "UPDATE_ACTIVE_BATTLEFIELD" then
 	
+		print("update active battlefield")
+	
 		local playerFaction = UnitFactionGroup("player")
 		local winningFaction = GetBattlefieldWinner()
 		
@@ -97,7 +99,7 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 			end
 		
 		end
-	
+	end
 end);
 
 -- calculate stats
