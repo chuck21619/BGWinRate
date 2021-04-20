@@ -3,7 +3,6 @@ local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("UPDATE_ACTIVE_BATTLEFIELD")
 
-
 local addonLoaded = false
 
 -- listen to events: initialize stats and update stats
