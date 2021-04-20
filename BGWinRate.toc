@@ -1,0 +1,10 @@
+# is a comment
+
+## Interface: 11306
+## Title: BGWinRate
+## Notes: tracks winrates for battlegrounds
+## Author: chuck
+## Version: 1.0
+## SavedVariablesPerCharacter: AlteracValleyWins, AlteracValleyLosses, WarsongGulchWins, WarsongGulchLosses, ArathiBasinWins, ArathiBasinLosses
+
+BGWinRate.lua
