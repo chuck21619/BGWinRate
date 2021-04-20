@@ -1,6 +1,3 @@
--- to show errors. type "/console scriptErrors 1" in wow. turn them off with "/console scriptErrors 0"
--- to run a method while in game. type "/run BGWinRate:HelloWorld()"
-
 local frame = CreateFrame("Frame")
 
 frame:RegisterEvent("ADDON_LOADED")
@@ -27,8 +24,6 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 		--Arathi Basin
 		if (ArathiBasinWins == nil) then ArathiBasinWins = 0; end
 		if (ArathiBasinLosses == nil) then ArathiBasinLosses = 0; end
-		elseif event == "CURSOR_UPDATE" then
-
 	
 	elseif event == "UPDATE_ACTIVE_BATTLEFIELD" then
 	
