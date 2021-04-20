@@ -4,12 +4,7 @@
 local frame = CreateFrame("Frame")
 
 frame:RegisterEvent("ADDON_LOADED")
-frame:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
-frame:RegisterEvent("UPDATE_BATTLEFIELD_SCORE")
 frame:RegisterEvent("UPDATE_ACTIVE_BATTLEFIELD")
-
-
-frame:RegisterEvent("CURSOR_UPDATE") --testing
 
 
 local addonLoaded = false
@@ -33,13 +28,6 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 		--Arathi Basin
 		if (ArathiBasinWins == nil) then ArathiBasinWins = 0; end
 		if (ArathiBasinLosses == nil) then ArathiBasinLosses = 0; end
-		
-	elseif event == "UPDATE_BATTLEFIELD_STATUS" then
-	
-		
-	elseif event == "UPDATE_BATTLEFIELD_SCORE" then
-	
-		
 		
 	elseif event == "UPDATE_ACTIVE_BATTLEFIELD" then
 	
@@ -109,11 +97,6 @@ frame:SetScript("OnEvent", function(__, event, arg1)
 			end
 		
 		end
-	
-	elseif event == "CURSOR_UPDATE" then
-	
-	
-	end
 	
 end);
 
@@ -198,8 +181,6 @@ local function MyAddonCommands(msg, editbox)
 		
 		displayAllWinRates()
 		
-	elseif msg == 'bye' then
-		print('Goodbye, World!')
 	else
 		print("BGWinRate - invalid command")
 	end
